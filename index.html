@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Balcony | Shisa & Chill</title>
+    <!-- Favicon linked to logo.png -->
+    <link rel="icon" href="logo.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Styles */
+        :root {
+            --brand-orange: #FF6B35;
+            --brand-dark: #121212;
+            --brand-darker: #0A0A0A;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--brand-dark);
+            color: #f3f4f6;
+        }
+
+        h1, h2, h3, .serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Hero Pattern Overlay */
+        .hero-bg {
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(18,18,18,1)), url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background: #FF6B35;
+            }
+
+        .glass-nav {
+            background: rgba(18, 18, 18, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -10px rgba(255, 107, 53, 0.3);
+        }
+
+        .text-glow {
+            text-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
+        }
+
+        /* Hide scrollbar for gallery */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 px-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold tracking-tighter text-white flex items-center gap-2">
+                <!-- Logo Image with Fallback to Icon -->
+                <img src="logo.png" alt="The Balcony" class="h-12 w-auto object-contain" onerror="this.style.display='none'; document.getElementById('fallback-icon').classList.remove('hidden')">
+                <i id="fallback-icon" data-lucide="flame" class="text-orange-500 hidden"></i>
+                <span>THE BALCONY</span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex gap-8 items-center">
+                <a href="#about" class="text-gray-300 hover:text-orange-500 transition-colors text-sm uppercase tracking-widest">Vibe</a>
+                <a href="#menu" class="text-gray-300 hover:text-orange-500 transition-colors text-sm uppercase tracking-widest">Menu</a>
+                <a href="#gallery" class="text-gray-300 hover:text-orange-500 transition-colors text-sm uppercase tracking-widest">Gallery</a>
+                <a href="#events" class="text-gray-300 hover:text-orange-500 transition-colors text-sm uppercase tracking-widest">Events</a>
+                <a href="#contact" class="bg-orange-600 hover:bg-orange-700 text-white px-6 py-2 rounded-full transition-colors text-sm uppercase tracking-widest font-semibold">Book a Table</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button onclick="toggleMobileMenu()" class="md:hidden text-white">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-[#121212] border-b border-gray-800 p-6 flex flex-col gap-4 shadow-2xl">
+            <a href="#about" onclick="toggleMobileMenu()" class="text-lg text-white">Vibe</a>
+            <a href="#menu" onclick="toggleMobileMenu()" class="text-lg text-white">Menu</a>
+            <a href="#gallery" onclick="toggleMobileMenu()" class="text-lg text-white">Gallery</a>
+            <a href="#events" onclick="toggleMobileMenu()" class="text-lg text-white">Events</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="text-orange-500 font-bold">Book a Table</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen flex items-center justify-center text-center px-4 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto z-10 pt-20">
+            <p class="text-orange-500 uppercase tracking-[0.3em] mb-4 text-sm md:text-base animate-fade-in-up">Eat. Drink. Vibe.</p>
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight">
+                Shisa & <br />
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-600 text-glow">Chill</span>
+            </h1>
+            <p class="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-light">
+                The ultimate rooftop experience. Premium meat, ice-cold drinks, and the best views in the city.
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="#menu" class="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-wider hover:bg-gray-200 transition-colors">
+                    View Menu
+                </a>
+                <a href="#contact" class="border border-white/30 backdrop-blur-sm text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider hover:bg-white/10 transition-colors">
+                    Find Us
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-white/50">
+            <i data-lucide="chevron-down" size="32"></i>
+        </div>
+    </section>
+
+    <!-- About / Vibe Section -->
+    <section id="about" class="py-20 md:py-32 px-6 bg-[#121212]">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <div class="space-y-8">
+                <div class="flex items-center gap-4">
+                    <div class="h-px w-12 bg-orange-500"></div>
+                    <span class="uppercase tracking-widest text-orange-500 text-sm">Our Story</span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold text-white leading-tight">
+                    More than just a <span class="italic text-orange-500">Shisa Nyama</span>.
+                </h2>
+                <p class="text-gray-400 text-lg leading-relaxed">
+                    At The Balcony, we believe in the ultimate weekend trifecta: great meat on the fire, good music in the air, and a cold drink in hand.
+                </p>
+                <p class="text-gray-400 text-lg leading-relaxed">
+                    Whether you're here for a sunset session, a big match on the screen, or a late-night vibe with our resident DJs, The Balcony is your home away from home.
+                </p>
+                <div class="grid grid-cols-2 gap-8 pt-4">
+                    <div>
+                        <h4 class="text-3xl font-bold text-white mb-2">Premium</h4>
+                        <p class="text-sm text-gray-500">Meat Selection</p>
+                    </div>
+                    <div>
+                        <h4 class="text-3xl font-bold text-white mb-2">Rooftop</h4>
+                        <p class="text-sm text-gray-500">City Views</p>
+                    </div>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="absolute -inset-4 bg-orange-600/20 rounded-2xl blur-xl"></div>
+                <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Rooftop Vibe" class="relative rounded-2xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-700">
+                <div class="absolute -bottom-10 -left-10 bg-[#1a1a1a] p-6 rounded-xl border border-gray-800 shadow-xl hidden md:block">
+                    <div class="flex items-center gap-4">
+                        <div class="bg-orange-500 p-3 rounded-full text-white">
+                            <i data-lucide="music"></i>
+                        </div>
+                        <div>
+                            <p class="text-white font-bold">Live DJ Sets</p>
+                            <p class="text-xs text-gray-400">Thu - Sun</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Preview -->
+    <section id="menu" class="py-20 bg-[#0A0A0A] relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-orange-500 uppercase tracking-widest text-sm">Taste the Fire</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mt-4">The Menu</h2>
+            </div>
+
+            <!-- Category Tabs -->
+            <div class="flex justify-center gap-6 mb-12 flex-wrap">
+                <button onclick="filterMenu('platters')" class="menu-tab active px-6 py-2 rounded-full border border-orange-500 bg-orange-500 text-white text-sm uppercase tracking-wide transition-all">Platters</button>
+                <button onclick="filterMenu('drinks')" class="menu-tab px-6 py-2 rounded-full border border-gray-700 text-gray-400 hover:border-orange-500 hover:text-orange-500 text-sm uppercase tracking-wide transition-all">Drinks</button>
+                <button onclick="filterMenu('hookah')" class="menu-tab px-6 py-2 rounded-full border border-gray-700 text-gray-400 hover:border-orange-500 hover:text-orange-500 text-sm uppercase tracking-wide transition-all">Hookah</button>
+            </div>
+
+            <!-- Menu Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="menu-grid">
+                <!-- Platter 1 -->
+                <div class="menu-card bg-[#121212] p-6 rounded-2xl border border-gray-800 group transition-all duration-300">
+                    <div class="h-48 mb-6 overflow-hidden rounded-xl">
+                        <img src="https://images.unsplash.com/photo-1529193591184-b1d580690dd0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Meat Platter">
+                    </div>
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-white">The Balcony Full House</h3>
+                        <span class="text-orange-500 font-bold">R450</span>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">Wors, Chuck, Chicken Wings, Short Ribs served with Pap, Chakalaka & Salsa.</p>
+                    <button class="w-full py-2 border border-gray-700 rounded text-gray-300 hover:border-orange-500 hover:text-orange-500 text-sm uppercase transition-colors">Order</button>
+                </div>
+
+                <!-- Platter 2 -->
+                <div class="menu-card bg-[#121212] p-6 rounded-2xl border border-gray-800 group transition-all duration-300">
+                    <div class="h-48 mb-6 overflow-hidden rounded-xl">
+                        <img src="https://images.unsplash.com/photo-1599599810769-bcde5a45ddfa?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Chicken Platter">
+                    </div>
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-white">Wings & Ribs Combo</h3>
+                        <span class="text-orange-500 font-bold">R280</span>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">Sticky BBQ wings and marinated pork ribs. A crowd favorite.</p>
+                    <button class="w-full py-2 border border-gray-700 rounded text-gray-300 hover:border-orange-500 hover:text-orange-500 text-sm uppercase transition-colors">Order</button>
+                </div>
+
+                <!-- Platter 3 -->
+                <div class="menu-card bg-[#121212] p-6 rounded-2xl border border-gray-800 group transition-all duration-300">
+                    <div class="h-48 mb-6 overflow-hidden rounded-xl">
+                        <img src="https://images.unsplash.com/photo-1541544741938-0af808871cc0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Veggies">
+                    </div>
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-white">Sides Platter</h3>
+                        <span class="text-orange-500 font-bold">R120</span>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">Generous serving of Creamed Spinach, Butternut, Pap & Chakalaka.</p>
+                    <button class="w-full py-2 border border-gray-700 rounded text-gray-300 hover:border-orange-500 hover:text-orange-500 text-sm uppercase transition-colors">Order</button>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="#" class="inline-flex items-center gap-2 text-white border-b border-orange-500 pb-1 hover:text-orange-500 transition-colors">
+                    Download Full Menu <i data-lucide="arrow-right" size="16"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-[#121212] border-t border-gray-900 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <span class="text-orange-500 uppercase tracking-widest text-sm">Snapshots</span>
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mt-4">The Vibe</h2>
+                </div>
+                <div class="flex gap-4">
+                    <button onclick="scrollGallery('left')" class="p-3 rounded-full border border-gray-700 text-white hover:bg-orange-500 hover:border-orange-500 transition-all">
+                        <i data-lucide="arrow-left"></i>
+                    </button>
+                    <button onclick="scrollGallery('right')" class="p-3 rounded-full border border-gray-700 text-white hover:bg-orange-500 hover:border-orange-500 transition-all">
+                        <i data-lucide="arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Gallery Slider -->
+            <div id="gallery-container" class="flex gap-6 overflow-x-auto no-scrollbar scroll-smooth pb-4">
+                <!-- Photo 1 -->
+                <div class="min-w-[300px] md:min-w-[400px] h-64 md:h-80 rounded-2xl overflow-hidden relative group shrink-0">
+                    <img src="photo1.jpg" onerror="this.src='https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'" alt="Gallery Image 1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+                </div>
+                <!-- Photo 2 -->
+                <div class="min-w-[300px] md:min-w-[400px] h-64 md:h-80 rounded-2xl overflow-hidden relative group shrink-0">
+                    <img src="photo2.jpg" onerror="this.src='https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'" alt="Gallery Image 2" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+                </div>
+                <!-- Photo 3 -->
+                <div class="min-w-[300px] md:min-w-[400px] h-64 md:h-80 rounded-2xl overflow-hidden relative group shrink-0">
+                    <img src="photo3.jpg" onerror="this.src='https://images.unsplash.com/photo-1533174072545-e8d4aa97edf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'" alt="Gallery Image 3" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+                </div>
+                <!-- Photo 4 -->
+                <div class="min-w-[300px] md:min-w-[400px] h-64 md:h-80 rounded-2xl overflow-hidden relative group shrink-0">
+                    <img src="photo4.jpg" onerror="this.src='https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'" alt="Gallery Image 4" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+                </div>
+                <!-- Photo 5 -->
+                <div class="min-w-[300px] md:min-w-[400px] h-64 md:h-80 rounded-2xl overflow-hidden relative group shrink-0">
+                    <img src="photo5.jpg" onerror="this.src='https://images.unsplash.com/photo-1559339352-11d035aa65de?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'" alt="Gallery Image 5" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+                </div>
+                <!-- Photo 6 -->
+                <div class="min-w-[300px] md:min-w-[400px] h-64 md:h-80 rounded-2xl overflow-hidden relative group shrink-0">
+                    <img src="photo6.jpg" onerror="this.src='https://images.unsplash.com/photo-1563226712-348e36785532?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'" alt="Gallery Image 6" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+                </div>
+                <!-- Photo 7 -->
+                <div class="min-w-[300px] md:min-w-[400px] h-64 md:h-80 rounded-2xl overflow-hidden relative group shrink-0">
+                    <img src="photo7.jpg" onerror="this.src='https://images.unsplash.com/photo-1574096079513-d82599697551?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'" alt="Gallery Image 7" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+                </div>
+                <!-- Photo 8 -->
+                <div class="min-w-[300px] md:min-w-[400px] h-64 md:h-80 rounded-2xl overflow-hidden relative group shrink-0">
+                    <img src="photo8.jpg" onerror="this.src='https://images.unsplash.com/photo-1510673322736-216960c1d636?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'" alt="Gallery Image 8" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events / Features -->
+    <section id="events" class="py-20 px-6 bg-[#121212]">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-0 border border-gray-800 rounded-3xl overflow-hidden">
+
+                <!-- Event 1: Mogodu Mondays -->
+                <div class="bg-orange-600 p-12 flex flex-col justify-center text-white">
+                    <h3 class="text-3xl font-bold mb-4">Mogodu Mondays</h3>
+                    <p class="text-orange-100 mb-6">Mogodu is free every Monday! Served with a side of Dombolo or Pap to chase away the blues.</p>
+                    <div class="flex items-center gap-2 text-sm font-semibold uppercase tracking-widest">
+                        <i data-lucide="utensils"></i> Every Monday
+                    </div>
+                </div>
+                <div class="bg-[#1a1a1a] h-64 md:h-auto relative">
+                    <img src="https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover opacity-60" alt="Traditional Food">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <i data-lucide="flame" size="48" class="text-white"></i>
+                    </div>
+                </div>
+
+                <!-- Event 2: Thirsty Thursdays -->
+                <div class="bg-[#1a1a1a] h-64 md:h-auto relative order-2 md:order-none">
+                    <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover opacity-60" alt="Cocktails">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <i data-lucide="wine" size="48" class="text-white"></i>
+                    </div>
+                </div>
+                <div class="bg-white p-12 flex flex-col justify-center text-black order-1 md:order-none">
+                    <h3 class="text-3xl font-bold mb-4">Thirsty Thursdays</h3>
+                    <p class="text-gray-600 mb-6">Start your weekend early. Buy 1 Get 1 Free on all cocktails between 4PM and 7PM.</p>
+                    <div class="flex items-center gap-2 text-sm font-semibold uppercase tracking-widest">
+                        <i data-lucide="clock"></i> 16:00 - 19:00
+                    </div>
+                </div>
+
+                <!-- Event 3: Soulful Sundays -->
+                <div class="bg-orange-600 p-12 flex flex-col justify-center text-white">
+                    <h3 class="text-3xl font-bold mb-4">Soulful Sundays</h3>
+                    <p class="text-orange-100 mb-6">Wind down with the best Soul & R&B sessions. Perfect for a relaxed vibe before the new week.</p>
+                    <div class="flex items-center gap-2 text-sm font-semibold uppercase tracking-widest">
+                        <i data-lucide="calendar"></i> Every Sunday
+                    </div>
+                </div>
+                <div class="bg-[#1a1a1a] h-64 md:h-auto relative">
+                    <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover opacity-60" alt="DJ">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <i data-lucide="mic-2" size="48" class="text-white"></i>
+                    </div>
+                </div>
+
+                <!-- Event 4: EPL Live -->
+                <div class="bg-[#1a1a1a] h-64 md:h-auto relative order-2 md:order-none">
+                    <img src="https://images.unsplash.com/photo-1522770179533-24471fcdba45?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover opacity-60" alt="Live Football">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <i data-lucide="tv" size="48" class="text-white"></i>
+                    </div>
+                </div>
+                <div class="bg-white p-12 flex flex-col justify-center text-black order-1 md:order-none">
+                    <h3 class="text-3xl font-bold mb-4">Premier League Live</h3>
+                    <p class="text-gray-600 mb-6">Big Match? Big Screen. We screen ALL Premier League matches live. Experience the stadium atmosphere with great food and drinks.</p>
+                    <div class="flex items-center gap-2 text-sm font-semibold uppercase tracking-widest">
+                        <i data-lucide="trophy"></i> Match Days
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Location / Contact -->
+    <section id="contact" class="py-20 bg-[#0A0A0A] border-t border-gray-900">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold text-white mb-10">Pull Through</h2>
+
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="p-6 bg-[#121212] rounded-xl border border-gray-800 hover:border-orange-500 transition-colors">
+                    <i data-lucide="map-pin" class="mx-auto text-orange-500 mb-4" size="32"></i>
+                    <h4 class="text-white font-bold mb-2">Location</h4>
+                    <p class="text-gray-400 text-sm">Rock Cottage Shopping Centre<br>Randpark Ridge, JHB</p>
+                </div>
+                <div class="p-6 bg-[#121212] rounded-xl border border-gray-800 hover:border-orange-500 transition-colors">
+                    <i data-lucide="phone" class="mx-auto text-orange-500 mb-4" size="32"></i>
+                    <h4 class="text-white font-bold mb-2">Bookings</h4>
+                    <p class="text-gray-400 text-sm">072 623 8777<br>bookings@thebalcony.co.za</p>
+                </div>
+                <div class="p-6 bg-[#121212] rounded-xl border border-gray-800 hover:border-orange-500 transition-colors">
+                    <i data-lucide="clock" class="mx-auto text-orange-500 mb-4" size="32"></i>
+                    <h4 class="text-white font-bold mb-2">Hours</h4>
+                    <p class="text-gray-400 text-sm">Daily<br>11:00 AM - Late</p>
+                </div>
+            </div>
+
+            <!-- Simple Reservation Form -->
+            <form class="bg-[#121212] p-8 rounded-2xl border border-gray-800 max-w-xl mx-auto text-left" onsubmit="event.preventDefault(); sendBookingToWhatsapp();">
+                <h3 class="text-2xl font-bold text-white mb-6 text-center">Make a Reservation</h3>
+                <div class="space-y-4">
+                    <input id="booking-name" type="text" placeholder="Your Name" class="w-full bg-[#0A0A0A] border border-gray-700 rounded-lg p-3 text-white focus:outline-none focus:border-orange-500" required>
+                    <div class="grid grid-cols-2 gap-4">
+                        <input id="booking-phone" type="tel" placeholder="Phone Number" class="w-full bg-[#0A0A0A] border border-gray-700 rounded-lg p-3 text-white focus:outline-none focus:border-orange-500" required>
+                        <input id="booking-guests" type="number" placeholder="Guests" class="w-full bg-[#0A0A0A] border border-gray-700 rounded-lg p-3 text-white focus:outline-none focus:border-orange-500" required>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <input id="booking-date" type="date" class="w-full bg-[#0A0A0A] border border-gray-700 rounded-lg p-3 text-white focus:outline-none focus:border-orange-500 scheme-dark" required>
+                        <input id="booking-time" type="time" class="w-full bg-[#0A0A0A] border border-gray-700 rounded-lg p-3 text-white focus:outline-none focus:border-orange-500 scheme-dark" required>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <select id="booking-location" class="w-full bg-[#0A0A0A] border border-gray-700 rounded-lg p-3 text-white focus:outline-none focus:border-orange-500">
+                            <option value="Outside">Outside</option>
+                            <option value="Inside">Inside</option>
+                        </select>
+                        <select id="booking-seating" class="w-full bg-[#0A0A0A] border border-gray-700 rounded-lg p-3 text-white focus:outline-none focus:border-orange-500">
+                            <option value="Table">Table</option>
+                            <option value="Couch">Couch</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 rounded-lg transition-colors flex items-center justify-center gap-2">
+                        <span>Confirm via WhatsApp</span>
+                        <i data-lucide="message-circle" size="18"></i>
+                    </button>
+                </div>
+            </form>
+
+            <!-- Map Embed -->
+            <div class="mt-16 rounded-2xl overflow-hidden border border-gray-800 shadow-2xl h-80 md:h-96 w-full">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3583.568343714856!2d27.93652897629535!3d-26.08053675896356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e9575975294025d%3A0x6331828135899933!2sRock%20Cottage%20Shopping%20Centre!5e0!3m2!1sen!2sza!4v1709635000000!5m2!1sen!2sza"
+                        width="100%"
+                        height="100%"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        class="grayscale hover:grayscale-0 transition-all duration-700">
+                </iframe>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/27726238777?text=Hi%20The%20Balcony,%20I%20have%20a%20question..." target="_blank" class="fixed bottom-6 right-6 bg-orange-600 text-white p-4 rounded-full shadow-lg hover:bg-orange-700 transition-all z-50 hover:scale-110 flex items-center justify-center border-2 border-white/10 group">
+        <span class="absolute right-full mr-3 bg-white text-black px-3 py-1 rounded text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+            Chat with us
+        </span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" /></svg>
+    </a>
+
+    <!-- Footer -->
+    <footer class="bg-black py-8 border-t border-gray-900 text-center">
+        <div class="flex justify-center gap-6 mb-4">
+            <a href="https://www.facebook.com/BalconyShisaandChill" target="_blank" class="text-gray-500 hover:text-white transition-colors"><i data-lucide="facebook"></i></a>
+            <a href="https://www.instagram.com/thebalconyrandpark" target="_blank" class="text-gray-500 hover:text-white transition-colors"><i data-lucide="instagram"></i></a>
+            <a href="#" class="text-gray-500 hover:text-white transition-colors"><i data-lucide="twitter"></i></a>
+        </div>
+        <p class="text-gray-600 text-sm">&copy; 2026 The Balcony Shisa & Chill. Built by You.</p>
+    </footer>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('glass-nav', 'py-2');
+                navbar.classList.remove('py-4');
+            } else {
+                navbar.classList.remove('glass-nav', 'py-2');
+                navbar.classList.add('py-4');
+            }
+        });
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Mock Menu Filter (Visual only for demo)
+        function filterMenu(category) {
+            const buttons = document.querySelectorAll('.menu-tab');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-orange-500', 'text-white', 'border-orange-500');
+                btn.classList.add('text-gray-400', 'border-gray-700');
+            });
+            event.target.classList.remove('text-gray-400', 'border-gray-700');
+            event.target.classList.add('bg-orange-500', 'text-white', 'border-orange-500');
+        }
+
+        // Gallery Scroll Logic
+        function scrollGallery(direction) {
+            const container = document.getElementById('gallery-container');
+            const scrollAmount = 400; // Approx one slide width
+            if (direction === 'left') {
+                container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            } else {
+                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        }
+
+        // WhatsApp Booking Logic
+        function sendBookingToWhatsapp() {
+            const name = document.getElementById('booking-name').value;
+            const phone = document.getElementById('booking-phone').value;
+            const guests = document.getElementById('booking-guests').value;
+            const date = document.getElementById('booking-date').value;
+            const time = document.getElementById('booking-time').value;
+            const location = document.getElementById('booking-location').value;
+            const seating = document.getElementById('booking-seating').value;
+
+            if (!name || !phone || !guests || !date || !time) {
+                alert('Please fill in all details');
+                return;
+            }
+
+            // Construct the message
+            const message = `Hi The Balcony, I'd like to make a reservation.%0a%0aName: ${name}%0aPhone: ${phone}%0aGuests: ${guests}%0aDate: ${date}%0aTime: ${time}%0aPreference: ${location} - ${seating}%0a%0aPlease confirm availability.`;
+
+            // Open WhatsApp (using the number provided: 072 623 8777 -> 27726238777)
+            window.open(`https://wa.me/27726238777?text=${message}`, '_blank');
+        }
+    </script>
+</body>
+</html>
